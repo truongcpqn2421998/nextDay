@@ -1,6 +1,8 @@
 public class NextDayCalculator {
 
     public static final String CONCAT = "/";
+    public static final int END_OF_MONTH2_IN_LEAP_YEAR = 29;
+    public static final int END_OF_MONTH2_IN_NORMAL_YEAR = 28;
 
     public static String nextDay(int day, int month, int year){
         int endOfMonth = getEndOfMonth(month,year);
@@ -33,25 +35,30 @@ public class NextDayCalculator {
                 endOfMonth=30;
                 break;
             case 2:
-                if(year%4==0){
-                    if(year%100==0){
-                        if(year%400==0){
-                            endOfMonth=29;
-                            break;
-                        }else {
-                            endOfMonth=28;
-                            break;
-                        }
-                    }else {
-                        endOfMonth=29;
-                        break;
-                    }
-
-                }else {
-                    endOfMonth=28;
-                    break;
-                }
+                endOfMonth = getEndOfMonth2(year);
+                break;
         }
         return endOfMonth;
+    }
+
+    private static int getEndOfMonth2(int year) {
+        int endOfMonth2;
+        boolean isDivisibleBy4 = year % 4 == 0;
+        boolean isDivisibleBy100 = year % 100 == 0;
+        boolean isDivisibleBy400 = year % 400 == 0;
+        if(isDivisibleBy4){
+            if(isDivisibleBy100){
+                if(isDivisibleBy400){
+                    endOfMonth2= END_OF_MONTH2_IN_LEAP_YEAR;
+                }else {
+                    endOfMonth2= END_OF_MONTH2_IN_NORMAL_YEAR;
+                }
+            }else {
+                endOfMonth2=END_OF_MONTH2_IN_LEAP_YEAR;
+            }
+        }else {
+            endOfMonth2=END_OF_MONTH2_IN_NORMAL_YEAR;
+        }
+        return endOfMonth2;
     }
 }

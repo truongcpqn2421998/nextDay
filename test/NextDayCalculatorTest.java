@@ -54,4 +54,14 @@ class NextDayCalculatorTest {
         String result=NextDayCalculator.nextDay(dayTest,monthTest,yearTest);
         assertEquals(expected,result);
     }
+    @org.junit.jupiter.api.Test
+    @DisplayName("case5 31/12/2018")
+    void tesDay31Month12Year2018() {
+        int dayTest=31;
+        int monthTest=12;
+        int yearTest=2018;
+        String expected="31/12/2018";
+        String result=NextDayCalculator.nextDay(dayTest,monthTest,yearTest);
+        assertEquals(expected,result);
+    }
 }

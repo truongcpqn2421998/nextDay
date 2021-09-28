@@ -25,7 +25,7 @@ class NextDayCalculatorTest {
         assertEquals(expected,result);
     }
     @org.junit.jupiter.api.Test
-    @DisplayName("case 31/1/2018")
+    @DisplayName("case 30/4/2018")
     void tesDay30Month4Year2018() {
         int dayTest=3;
         int monthTest=4;

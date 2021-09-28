@@ -7,7 +7,12 @@ public class NextDayCalculator {
     public static String nextDay(int day, int month, int year){
         int endOfMonth = getEndOfMonth(month,year);
         int startOfMonth = 1;
-        if(day== endOfMonth){
+        int startOfYear = 1;
+        if (day==endOfMonth&&month==12){
+            day=startOfMonth;
+            month= startOfYear;
+            year++;
+        }else if(day== endOfMonth){
             day= startOfMonth;
             month++;
         }else {
